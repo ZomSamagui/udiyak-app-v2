@@ -1,5 +1,5 @@
-import {NavigationContainer} from "@react-navigation/native";
-import {createStackNavigator} from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import Login from "src/screens/auth/login";
 import SignUp from "src/screens/auth/signup";
@@ -17,10 +17,10 @@ export default function AuthNavigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="OnBoarding">
-                <Stack.Screen name="OnBoarding" component={OnBoarding} options={{headerShown: false}} />
-                <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
-                <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}} />
+                <Stack.Screen name="OnBoarding" component={OnBoarding} options={{ headerShown: false }} />
+                <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+                <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
-    )
+    );
 }
