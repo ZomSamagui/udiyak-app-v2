@@ -11,9 +11,9 @@ type TheJamsilTextProps = {
 
 export default function TheJamsilText({children, style, fontSize, fontWeight = `Bold`}: TheJamsilTextProps) {
     const [fontsLoaded] = useFonts({
-        TheJamsilBold: require('../../assets/fonts/TheJamsilBold.otf'),
-        TheJamsilMedium: require('../../assets/fonts/TheJamsilMedium.otf'),
-        TheJamsilRegular: require('../../assets/fonts/TheJamsilRegular.otf'),
+        TheJamsilBold: require('src/assets/fonts/TheJamsilBold.otf'),
+        TheJamsilMedium: require('src/assets/fonts/TheJamsilMedium.otf'),
+        TheJamsilRegular: require('src/assets/fonts/TheJamsilRegular.otf'),
     });
 
     if (!fontsLoaded) return <ActivityIndicator size="large" color="#0000ff"/>;

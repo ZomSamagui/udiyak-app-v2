@@ -10,7 +10,7 @@ type StunningTextProps = {
 
 export default function StunningText({children, style, fontSize}: StunningTextProps) {
     const [fontsLoaded] = useFonts({
-        Stunning: require('../../assets/fonts/STUNNINGOTF.otf')
+        Stunning: require('src/assets/fonts/STUNNINGOTF.otf')
     })
 
     if (!fontsLoaded) return <ActivityIndicator size="large" color="black"/>;
