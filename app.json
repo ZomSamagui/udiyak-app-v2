@@ -4,11 +4,9 @@
     "slug": "udiyak-app-v2",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,7 +15,6 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
@@ -26,6 +23,27 @@
     },
     "plugins": [
       "expo-font"
+    ],
+    "assets": [
+      "./assets/fonts/"
+    ],
+    "fonts": [
+      {
+        "asset": "./assets/fonts/Stunning.otf",
+        "name": "Stunning"
+      },
+      {
+        "assets": "./assets/fonts/TheJamsilBold.otf",
+        "name": "TheJamsilBold"
+      },
+      {
+        "assets": "./assets/fonts/TheJamsilMedium.otf",
+        "name": "TheJamsilMedium"
+      },
+      {
+        "assets": "./assets/fonts/TheJamsilRegular.otf",
+        "name": "TheJamsilRegular"
+      }
     ]
   }
 }
