@@ -1,6 +1,6 @@
 export const Fontlist = {
-    'STUNNING' : require('./Stunning.otf'),
-    'Jamsil-Regular' : require('./TheJamsilRegular.otf'),
-    'Jamsil-Medium' : require('./TheJamsilMedium.otf'),
-    'Jamsil-Bold' : require('./TheJamsilBold.otf'),
+    'Stunning' : require('./Stunning.otf'),
+    'TheJamsilRegular' : require('./TheJamsilRegular.otf'),
+    'TheJamsilMedium' : require('./TheJamsilMedium.otf'),
+    'TheJamsilBold' : require('./TheJamsilBold.otf'),
 }
