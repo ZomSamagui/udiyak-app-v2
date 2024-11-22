@@ -4,13 +4,19 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "*": [
-        "*"
-      ]
+      "navigation/*": ["navigation/*"],
+      "assets/*": ["assets/*"],
+      "components/*": ["components/*"],
+      "constants/*": ["constants/*"],
+      "hooks/*": ["hooks/*"],
+      "lib/*": ["lib/*"],
+      "navigation/*": ["navigation/*"],
+      "screens/*": ["screens/*"],
+      "type/*": ["type/*"],
     }
   },
   "include": [
-    "src/**/*",
+    "**/*",
     "@types/**/*"
   ]
 }

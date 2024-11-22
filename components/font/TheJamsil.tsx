@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, View, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
-import { Fontlist } from "../../../assets/fonts/Fontlist";
+import { Fontlist } from "assets/fonts/Fontlist";
 
 type TheJamsilTextProps = {
     children: React.ReactNode;

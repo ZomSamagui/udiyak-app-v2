@@ -4,9 +4,9 @@ module.exports = function (api) {
         presets: ['babel-preset-expo'],
         plugins: [
             [
-                'module-resolver', // 경로 별칭 사용 설정
+                'module-resolver',
                 {
-                    root: ['./src'], // src 디렉토리를 루트로 설정
+                    root: ['./'],
                     extensions: [
                         '.js',
                         '.jsx',
@@ -18,7 +18,14 @@ module.exports = function (api) {
                         '.jpg',
                     ],
                     alias: {
-                        'src': './',
+                        navigation: './navigation',
+                        assets: './assets',
+                        components: './components',
+                        constants: './constants',
+                        hooks: './hooks',
+                        lib: './lib',
+                        screens: './screens',
+                        type: './type'
                     }
                 },
             ],
