@@ -17,6 +17,13 @@
   },
   "include": [
     "**/*",
-    "@types/**/*"
+    "@types/**/*",
+    "navigation/**/*",
+    "assets/**/*",
+    "components/**/*",
+    "hooks/**/*",
+    "lib/**/*",
+    "screens/**/*",
+    "type/**/*"
   ]
 }
