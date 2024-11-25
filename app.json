@@ -24,26 +24,8 @@
     "plugins": [
       "expo-font"
     ],
-    "assets": [
-      "./assets/fonts/"
-    ],
-    "fonts": [
-      {
-        "asset": "./assets/fonts/Stunning.otf",
-        "name": "Stunning"
-      },
-      {
-        "assets": "./assets/fonts/TheJamsilBold.otf",
-        "name": "TheJamsilBold"
-      },
-      {
-        "assets": "./assets/fonts/TheJamsilMedium.otf",
-        "name": "TheJamsilMedium"
-      },
-      {
-        "assets": "./assets/fonts/TheJamsilRegular.otf",
-        "name": "TheJamsilRegular"
-      }
-    ]
+    "extra": {
+      "assets": "./assets/fonts/"
+    }
   }
 }
