@@ -3,12 +3,12 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 // Assets
-import TheJamsilText from "components/font/TheJamsil";
-import StunningText from "components/font/Stunning";
-import Udiyak_Logo from "assets/image/Udiyak_Logo.svg";
+import TheJamsilText from "Components/Font/TheJamsil";
+import StunningText from "Components/Font/Stunning";
+import Udiyak_Logo from "Assets/Images/Udiyak_Logo.svg";
 
 // File & Folder
-import { AuthStackParamList } from "navigation/AuthNavigation";
+import { AuthStackParamList } from "Navigation/AuthNavigation";
 import * as S from "./style"; // styled-components 사용
 
 type ScreenNavigationProps = StackNavigationProp<AuthStackParamList, 'OnBoarding'>;

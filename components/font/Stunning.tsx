@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
 });
 
-import {FontList} from "assets/Fonts/fontList";
+import {FontList} from "Assets/Fonts/fontList";
 
 type StunningTextProps = {
     children: React.ReactNode;
