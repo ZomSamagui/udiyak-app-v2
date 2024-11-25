@@ -4,15 +4,14 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "navigation/*": ["navigation/*"],
-      "assets/*": ["assets/*"],
-      "components/*": ["components/*"],
-      "constants/*": ["constants/*"],
-      "hooks/*": ["hooks/*"],
-      "lib/*": ["lib/*"],
-      "navigation/*": ["navigation/*"],
-      "screens/*": ["screens/*"],
-      "type/*": ["type/*"],
+      "navigation/*": ["Navigation/*"],
+      "assets/*": ["Assets/*"],
+      "components/*": ["Components/*"],
+      "constants/*": ["Constants/*"],
+      "hooks/*": ["Hooks/*"],
+      "lib/*": ["Lib/*"],
+      "screens/*": ["Screens/*"],
+      "type/*": ["Type/*"],
     }
   },
   "include": [
