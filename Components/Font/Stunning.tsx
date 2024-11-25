@@ -1,16 +1,21 @@
 import React from "react";
-import {Text, StyleSheet, ActivityIndicator, View} from "react-native";
-import {useFonts} from "expo-font";
+import { ActivityIndicator, View, Text, StyleSheet } from "react-native";
+import { useFonts } from "expo-font";
+
+// Assets
+import { FontList } from "Assets/Fonts/fontList";
 
 const styles = StyleSheet.create({
     loadingContainer: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    styledText: {
+        fontFamily: "Stunning",
+        fontSize: 14,
     },
 });
-
-import {FontList} from "Assets/Fonts/fontList";
 
 type StunningTextProps = {
     children: React.ReactNode;
@@ -18,22 +23,20 @@ type StunningTextProps = {
     fontSize?: number;
 };
 
-export default function StunningText({children, style, fontSize}: StunningTextProps) {
-
+export default function StunningText({ children, style, fontSize }: StunningTextProps) {
     const [fontsLoaded] = useFonts(FontList);
-
 
     if (!fontsLoaded) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#0000ff"/>
+                <ActivityIndicator size="large" color="#0000ff" />
             </View>
         );
     }
 
     return (
-        <Text style={[style, {fontFamily: `Stunning`, fontSize: fontSize}]}>
+        <Text style={[styles.styledText, style, { fontSize: fontSize || 14 }]}>
             {children}
         </Text>
-    )
+    );
 }

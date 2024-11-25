@@ -1,7 +1,18 @@
 import React from "react";
-import { Text, StyleSheet, View, ActivityIndicator } from "react-native";
+import { ActivityIndicator, View, Text, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import { FontList } from "Assets/Fonts/fontList";
+
+const styles = StyleSheet.create({
+    loadingContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    styledText: {
+        fontSize: 14,
+    },
+});
 
 type TheJamsilTextProps = {
     children: React.ReactNode;
@@ -10,7 +21,12 @@ type TheJamsilTextProps = {
     fontWeight?: "Regular" | "Medium" | "Bold";
 };
 
-export default function TheJamsilText({ children, style, fontSize, fontWeight = "Bold" }: TheJamsilTextProps) {
+export default function TheJamsilText({
+                                          children,
+                                          style,
+                                          fontSize,
+                                          fontWeight = "Bold",
+                                      }: TheJamsilTextProps) {
     const [fontsLoaded] = useFonts(FontList);
 
     if (!fontsLoaded) {
@@ -22,16 +38,14 @@ export default function TheJamsilText({ children, style, fontSize, fontWeight = 
     }
 
     return (
-        <Text style={[style, { fontFamily: `TheJamsil${fontWeight}`, fontSize }]}>
+        <Text
+            style={[
+                styles.styledText,
+                style,
+                { fontFamily: `TheJamsil${fontWeight}`, fontSize: fontSize || 14 },
+            ]}
+        >
             {children}
         </Text>
     );
 }
-
-const styles = StyleSheet.create({
-    loadingContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
