@@ -1,5 +1,5 @@
 import {PrimaryColor, Grey} from "Constants/color"
-import {FontList} from "assets/Fonts/fontList";
+import {FontList} from "Assets/Fonts/fontList";
 
 export const Thema = {
     colors:{
