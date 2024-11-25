@@ -1,21 +1,21 @@
-import {StyleSheet} from 'react-native';
+import styled from "styled-components/native";
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        backgroundColor: '#fff',
-        paddingTop: 130,
-        paddingLeft: 40,
-    },
-    subContainer: {
-        marginTop: 12,
-    },
-    subTitle: {
-        color: '#D9D9D9',
-        marginTop: 5,
-    },
-});
+export const Container = styled.View`
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #fff;
+    padding-top: 130px;
+    padding-left: 40px;
+`;
 
-export default styles;
+export const SubContainer = styled.View`
+    margin-top: 12px;
+`;
+
+export const LogoContainer = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+`;

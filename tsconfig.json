@@ -17,13 +17,13 @@
   },
   "include": [
     "**/*",
-    "@types/**/*",
-    "navigation/**/*",
-    "assets/**/*",
-    "components/**/*",
-    "hooks/**/*",
-    "lib/**/*",
-    "screens/**/*",
-    "type/**/*"
+    "@Types/**/*",
+    "Navigation/**/*",
+    "Assets/**/*",
+    "Components/**/*",
+    "Hooks/**/*",
+    "Lib/**/*",
+    "Screens/**/*",
+    "Type/**/*"
   ]
 }
