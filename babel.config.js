@@ -18,14 +18,14 @@ module.exports = function (api) {
                         '.jpg',
                     ],
                     alias: {
-                        navigation: './navigation',
-                        assets: './assets',
-                        components: './components',
-                        constants: './constants',
-                        hooks: './hooks',
-                        lib: './lib',
-                        screens: './screens',
-                        type: './type'
+                        navigation: './Navigation',
+                        assets: './Assets',
+                        components: './Components',
+                        constants: './Constants',
+                        hooks: './Hooks',
+                        lib: './Lib',
+                        screens: './Screens',
+                        type: './Type'
                     }
                 },
             ],
