@@ -6,9 +6,11 @@
   "author": "qtaghdi <135234546+qtaghdi@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
+    "@react-native-cookies/cookies": "^6.2.1",
     "@react-native/metro-config": "0.72.11",
     "@react-navigation/native": "6.1.9",
     "@react-navigation/stack": "6.3.20",
+    "axios": "^1.7.7",
     "expo": "^52.0.10",
     "metro": "^0.81.0",
     "metro-config": "^0.81.0",
@@ -20,7 +22,9 @@
     "react-native-safe-area-context": "4.12.0",
     "react-native-screens": "~4.1.0",
     "react-native-svg": "15.8.0",
-    "react-native-svg-transformer": "^1.5.0"
+    "react-native-svg-transformer": "^1.5.0",
+    "style-sheet": "^4.0.4",
+    "styled-components": "^6.1.13"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
