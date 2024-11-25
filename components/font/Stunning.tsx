@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
 });
 
-import {Fontlist} from "assets/fonts/Fontlist";
+import {FontList} from "assets/Fonts/fontList";
 
 type StunningTextProps = {
     children: React.ReactNode;
@@ -20,7 +20,7 @@ type StunningTextProps = {
 
 export default function StunningText({children, style, fontSize}: StunningTextProps) {
 
-    const [fontsLoaded] = useFonts(Fontlist);
+    const [fontsLoaded] = useFonts(FontList);
 
 
     if (!fontsLoaded) {

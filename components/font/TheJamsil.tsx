@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, View, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
-import { Fontlist } from "assets/fonts/Fontlist";
+import { FontList } from "assets/Fonts/fontList";
 
 type TheJamsilTextProps = {
     children: React.ReactNode;
@@ -11,7 +11,7 @@ type TheJamsilTextProps = {
 };
 
 export default function TheJamsilText({ children, style, fontSize, fontWeight = "Bold" }: TheJamsilTextProps) {
-    const [fontsLoaded] = useFonts(Fontlist);
+    const [fontsLoaded] = useFonts(FontList);
 
     if (!fontsLoaded) {
         return (
