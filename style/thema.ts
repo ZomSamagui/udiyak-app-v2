@@ -16,6 +16,6 @@ export const Thema = {
         large: 50,
     },
     borderRadius: {
-        primary: 24,
+        primary: 10,
     }
 }
