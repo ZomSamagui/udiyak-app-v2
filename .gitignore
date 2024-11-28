@@ -1,5 +1,5 @@
 # NativeScript
-hooks/
+src/logic/
 node_modules/
 platforms/
 tools/assets/

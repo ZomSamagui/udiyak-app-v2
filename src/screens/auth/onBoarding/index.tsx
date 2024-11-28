@@ -1,17 +1,16 @@
 // RN
 import React from "react";
-import {View, Text, TouchableOpacity} from "react-native";
+import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
 import {StackNavigationProp} from "@react-navigation/stack";
 
 // Assets
-import TheJamsilText from "components/fonts/TheJamsil";
-import StunningText from "components/fonts/Stunning";
-import Udiyak_Logo from "assets/images/Udiyak_Logo.svg";
-import {UdiyakButton} from "components/button";
+import TheJamsilText from "src/components/fonts/TheJamsil";
+import StunningText from "src/components/fonts/Stunning";
+import Udiyak_Logo from "src/assets/images/Udiyak_Logo.svg";
+import {UdiyakButton} from "src/components/button";
 
 // File & Folder
-import {AuthStackParamList} from "navigation/AuthNavigation";
-import styles from "./style";
+import {AuthStackParamList} from "src/navigation/AuthNavigation";
 import {useNavigation} from "@react-navigation/core";
 
 
@@ -41,5 +40,27 @@ const OnBoarding = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        padding: 50,
+        paddingTop: 130,
+    },
+    titleContainer: {
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        marginTop: 12,
+    },
+    captionContainer: {
+        marginTop: 5,
+    },
+    logoContainer: {
+        marginVertical: "40%",
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+});
 
 export default OnBoarding;

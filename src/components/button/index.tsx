@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {Thema} from "style/thema";
-import TheJamsilText from "components/fonts/TheJamsil";
+import {Thema} from "src/style/thema";
+import TheJamsilText from "src/components/fonts/TheJamsil";
 
 type ButtonProps = {
     title?: string;

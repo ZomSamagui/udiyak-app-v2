@@ -1,9 +1,9 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import login from "screens/auth/login";
-import signUp from "screens/auth/signUp";
-import onBoarding from "screens/auth/onBoarding";
+import login from "src/screens/auth/login";
+import signUp from "src/screens/auth/signUp";
+import onBoarding from "src/screens/auth/onBoarding";
 
 export type AuthStackParamList = {
     Login: undefined;

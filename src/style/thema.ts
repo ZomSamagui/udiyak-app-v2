@@ -1,5 +1,5 @@
-import {PrimaryColor, Gray} from "constants/color"
-import {FontList} from "assets/fonts/FontList";
+import {PrimaryColor, Gray} from "src/constants/color"
+import {FontList} from "src/assets/fonts/FontList";
 
 export const Thema = {
     colors:{
@@ -17,5 +17,6 @@ export const Thema = {
     },
     borderRadius: {
         primary: 10,
+        small: 7,
     }
 }

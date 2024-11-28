@@ -19,7 +19,7 @@ module.exports = function (api) {
                         assets: './assets',
                         components: './components',
                         constants: './constants',
-                        hooks: './hooks',
+                        hooks: './logic',
                         lib: './lib',
                         screens: './screens',
                         type: './type'

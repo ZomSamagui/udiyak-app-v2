@@ -1,7 +1,7 @@
 import React from "react";
 import {Text, StyleSheet} from "react-native";
 import {useFonts} from "expo-font";
-import {FontList} from "assets/fonts/FontList";
+import {FontList} from "src/assets/fonts/FontList";
 
 type StunningProps = {
     children: React.ReactNode;
