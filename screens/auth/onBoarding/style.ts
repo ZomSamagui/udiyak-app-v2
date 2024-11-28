@@ -3,24 +3,22 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#fff',
+        padding: 50,
         paddingTop: 130,
-        paddingLeft: 40,
     },
-    subContainer: {
+    titleContainer: {
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
         marginTop: 12,
     },
-    subTitle: {
-        color: '#D9D9D9',
+    captionContainer: {
         marginTop: 5,
     },
     logoContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf: 'center',
     },
 });
 

@@ -22,16 +22,15 @@ const OnBoarding = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.subContainer}>
+            <View style={styles.titleContainer}>
                 <TheJamsilText fontSize={40} fontWeight={"Bold"}>
                     어디약
                 </TheJamsilText>
-                <StunningText fontSize={16}>어디서나 쉽고 간편하게</StunningText>
-                <StunningText fontSize={16}>안전상비약을 찾아보세요</StunningText>
+                <View style={styles.captionContainer}>
+                    <StunningText fontSize={16}>어디서나 쉽고 간편하게</StunningText>
+                    <StunningText fontSize={16}>안전상비약을 찾아보세요</StunningText>
+                </View>
             </View>
-            <StunningText style={{fontSize: 10, color: "#D9D9D9", marginTop: 5}}>
-                어디약을 이용하기 위해 로그인 해주세요.
-            </StunningText>
             <View style={styles.logoContainer}>
                 <Udiyak_Logo/>
             </View>
