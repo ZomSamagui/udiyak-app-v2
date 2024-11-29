@@ -1,7 +1,7 @@
 module.exports = function (api) {
     api.cache(true);
     return {
-        presets: ['babel-preset-expo'],
+        presets: ['babel-preset-expo', 'module:metro-react-native-babel-preset'], // Combine presets into one array
         plugins: [
             [
                 'module-resolver',
@@ -29,7 +29,6 @@ module.exports = function (api) {
             [
                 'module:react-native-dotenv',
                 {
-                    moduleName: 'react-native-dotenv',
                     path: '.env',
                 },
             ],
