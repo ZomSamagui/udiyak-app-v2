@@ -2,6 +2,7 @@
 import React from "react";
 import {View, TouchableOpacity, StyleSheet,} from "react-native";
 import {StackNavigationProp} from "@react-navigation/stack";
+import {useNavigation} from "@react-navigation/core";
 
 // Assets
 import TheJamsilText from "src/components/fonts/TheJamsil";
@@ -11,7 +12,6 @@ import {UdiyakButton} from "src/components/button/auth";
 
 // File & Folder
 import {AuthStackParamList} from "src/navigation/AuthNavigation";
-import {useNavigation} from "@react-navigation/core";
 import {Thema} from "src/style/thema";
 
 
@@ -22,11 +22,11 @@ const OnBoarding = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.titleContainer}>
+            <View style={styles.title1Container}>
                 <TheJamsilText fontSize={40} fontWeight={"Bold"}>
                     어디약
                 </TheJamsilText>
-                <View style={styles.captionContainer}>
+                <View style={styles.title2Container}>
                     <StunningText fontSize={16}>어디서나 쉽고 간편하게</StunningText>
                     <StunningText fontSize={16}>안전상비약을 찾아보세요</StunningText>
                 </View>
@@ -61,12 +61,12 @@ const styles = StyleSheet.create({
         padding: 50,
         paddingTop: 130,
     },
-    titleContainer: {
+    title1Container: {
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
         marginTop: 12,
     },
-    captionContainer: {
+    title2Container: {
         marginTop: 5,
     },
     logoContainer: {
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     signUpContainer: {
+        marginTop: 5,
         flexDirection: 'row',
         gap: 4,
         flex: 0.3,
