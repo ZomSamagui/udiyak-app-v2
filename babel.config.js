@@ -1,7 +1,7 @@
 module.exports = function (api) {
     api.cache(true);
     return {
-        presets: ['babel-preset-expo', 'module:metro-react-native-babel-preset'], // Combine presets into one array
+        presets: ['babel-preset-expo', 'module:metro-react-native-babel-preset'],
         plugins: [
             [
                 'module-resolver',

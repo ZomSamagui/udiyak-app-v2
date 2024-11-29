@@ -12,7 +12,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@react-native-masked-view/masked-view": "^0.3.2",
+    "@expo/dev-server": "^0.5.5",
+    "@react-native-masked-view/masked-view": "0.3.2",
     "@react-navigation/native": "^7.0.6",
     "@react-navigation/stack": "^7.0.13",
     "axios": "^1.7.7",
@@ -22,6 +23,7 @@
     "expo-font": "~13.0.1",
     "expo-secure-store": "~14.0.0",
     "gsap": "^3.12.5",
+    "metro": "^0.81.0",
     "react": "18.3.1",
     "react-native": "0.76.3",
     "react-native-gesture-handler": "~2.20.2",
@@ -32,13 +34,15 @@
     "react-native-vector-icons": "^10.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
+    "@babel/core": "^7.25.2",
     "@react-native-community/cli": "^15.1.2",
     "@types/react": "~18.3.12",
+    "@types/react-native": "^0.72.8",
     "babel-plugin-module-resolver": "^5.0.2",
+    "metro-react-native-babel-preset": "^0.77.0",
     "react-native-dotenv": "^3.4.11",
     "react-native-svg-transformer": "^1.5.0",
-    "typescript": "^5.7.2"
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=22.11.0"
