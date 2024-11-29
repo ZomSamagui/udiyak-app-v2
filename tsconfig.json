@@ -20,7 +20,7 @@
     "src/navigation/**/*",
     "src/assets/**/*",
     "src/components/**/*",
-    "src/logic/**/*",
+    "src/hooks/**/*",
     "src/lib/**/*",
     "src/screens/**/*",
     "type/**/*"
