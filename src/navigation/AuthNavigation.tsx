@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import login from "src/screens/auth/login";
 import signUp from "src/screens/auth/signUp";
-import onBoarding from "src/screens/auth/onBoarding";
+import onBoarding from "src/screens/onBoarding";
 
 export type AuthStackParamList = {
     Login: undefined;
