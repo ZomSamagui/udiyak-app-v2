@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Alert } from 'react-native';
 import udiyakCustomAxios from 'src/lib/axios';
 import { SignUpResponse, User } from "src/type/signup.type";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const useSignUp = () => {
     const [loading, setLoading] = useState(false);
@@ -25,10 +26,23 @@ const useSignUp = () => {
             });
 
             const user = response?.data?.user;
+            const accessToken = response?.data?.accessToken;
+            const refreshToken = response?.data?.refreshToken;
+
             console.log('회원가입 성공:', user);
 
             if (user) {
                 Alert.alert('회원가입 성공', '회원가입이 완료되었습니다.');
+
+                if (accessToken && refreshToken) {
+                    const expirationDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000; // 7일 후
+
+                    await AsyncStorage.setItem('accessToken', accessToken);
+                    await AsyncStorage.setItem('refreshToken', refreshToken);
+                    await AsyncStorage.setItem('tokenExpiration', expirationDate.toString());
+
+                    console.log('AccessToken과 RefreshToken 저장 완료');
+                }
             } else {
                 throw new Error('회원가입 응답에 사용자 정보가 없습니다.');
             }
