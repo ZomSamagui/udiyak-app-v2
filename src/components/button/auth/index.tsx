@@ -4,12 +4,13 @@ import {Thema} from "src/style/thema";
 import TheJamsilText from "src/components/fonts/TheJamsil";
 
 type ButtonProps = {
-    title?: string;
-    onPress?: () => void;
-    disabled?: any;
+    title?: string,
+    onPress?: () => void,
+    disabled?: any,
+    style?: any,
 };
 
-export const UdiyakButton = ({title = "Text", onPress, disabled}: ButtonProps) => {
+export const UdiyakButton = ({title = "Text", onPress, disabled, style}: ButtonProps) => {
     const [isPressed, setIsPressed] = useState(false);
 
     return (
