@@ -10,6 +10,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      "expo-dotenv"
+    ],
     "ios": {
       "supportsTablet": true
     },

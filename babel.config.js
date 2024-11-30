@@ -1,19 +1,13 @@
 module.exports = function (api) {
     api.cache(true);
     return {
-        presets: ['babel-preset-expo', 'module:metro-react-native-babel-preset'],
+        presets: ['babel-preset-expo'],
         plugins: [
             [
                 'module-resolver',
                 {
                     root: ['./'],
-                    extensions: [
-                        '.js',
-                        '.jsx',
-                        '.ts',
-                        '.tsx',
-                        '.json',
-                    ],
+                    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
                     alias: {
                         navigation: './navigation',
                         assets: './assets',
@@ -22,13 +16,14 @@ module.exports = function (api) {
                         hooks: './hooks',
                         lib: './lib',
                         screens: './screens',
-                        type: './type'
-                    }
+                        type: './type',
+                    },
                 },
             ],
             [
                 'module:react-native-dotenv',
                 {
+                    moduleName: '@env',
                     path: '.env',
                 },
             ],

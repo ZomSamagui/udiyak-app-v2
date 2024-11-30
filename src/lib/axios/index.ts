@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { SERVER_URL } from 'react-native-dotenv';
+import { SERVER_URL } from '@env';
 
 class AxiosService {
     private axiosInstance: AxiosInstance;
@@ -11,6 +11,7 @@ class AxiosService {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${SERVER_URL}`,
             },
         });
     }

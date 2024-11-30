@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": "./",
+    "typeRoots": ["./node_modules/@types", "./@types"],
     "paths": {
       "navigation/*": ["navigation/*"],
       "assets/*": ["assets/*"],
