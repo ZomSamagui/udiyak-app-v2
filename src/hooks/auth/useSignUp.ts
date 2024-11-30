@@ -10,7 +10,7 @@ const useSignUp = () => {
     const signUp = async (email: string, password: string, nickname: string) => {
         setLoading(true);
         setError(null);
-        
+
         if (password.length < 10) {
             Alert.alert('비밀번호 오류', '비밀번호는 최소 10자리 이상이어야 합니다.');
             setLoading(false);
