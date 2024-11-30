@@ -9,5 +9,7 @@ export interface SignUpResponse {
     message: string;
     data: {
         user: User;
+        accessToken: string;
+        refreshToken: string;
     };
 }
