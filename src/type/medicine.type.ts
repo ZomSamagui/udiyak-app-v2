@@ -1,4 +1,5 @@
 export interface medicineProps {
+    id: number;
     name: string; // 약 이름
     usage: string; // 사용 용도
     efficacy: string; // 효능 효과
