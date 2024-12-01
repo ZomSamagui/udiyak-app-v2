@@ -10,12 +10,12 @@ import { UdiyakButton } from "src/components/button/auth";
 import { UdiyakInput } from "src/components/input";
 
 // File & Folder
-import { AuthStackParamList } from "src/navigation/AuthNavigation";
+import {RootStackParamList} from "src/navigation/RootNavigation";
 import BackButton from "src/components/button/back";
 import { Thema } from "src/style/thema";
 import useSignUp from "src/hooks/auth/useSignUp";
 
-type AuthNavigationProps = StackNavigationProp<AuthStackParamList, 'SignUp'>;
+type AuthNavigationProps = StackNavigationProp<RootStackParamList, 'SignUp'>;
 
 const SignUp = () => {
     const navigation = useNavigation<AuthNavigationProps>();

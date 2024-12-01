@@ -11,11 +11,11 @@ import Udiyak_Logo from "src/assets/images/Udiyak_Logo.svg";
 import {UdiyakButton} from "src/components/button/auth";
 
 // File & Folder
-import {AuthStackParamList} from "src/navigation/AuthNavigation";
+import {RootStackParamList} from "src/navigation/RootNavigation";
 import {Thema} from "src/style/thema";
 
 
-type AuthNavigationProps = StackNavigationProp<AuthStackParamList, 'OnBoarding'>;
+type AuthNavigationProps = StackNavigationProp<RootStackParamList, 'OnBoarding'>;
 
 const OnBoarding = () => {
     const navigation = useNavigation<AuthNavigationProps>();

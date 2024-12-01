@@ -1,26 +1,23 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import login from "src/screens/auth/login";
-import signUp from "src/screens/auth/signUp";
-import onBoarding from "src/screens/onBoarding";
+import Login from "src/screens/auth/login";
+import SignUp from "src/screens/auth/signUp";
+import OnBoarding from "src/screens/onBoarding";
 
 export type AuthStackParamList = {
-    Login: undefined;
-    SignUp: undefined;
     OnBoarding: undefined;
+    Login: undefined;
+    SignUp: undefined
 }
 
 const Stack = createStackNavigator<AuthStackParamList>();
 
 export default function AuthNavigation() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName="OnBoarding">
-                <Stack.Screen name="OnBoarding" component={onBoarding} options={{ headerShown: false }} />
-                <Stack.Screen name="Login" component={login} options={{ headerShown: false }} />
-                <Stack.Screen name="SignUp" component={signUp} options={{ headerShown: false }} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Stack.Navigator initialRouteName="OnBoarding" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="OnBoarding" component={OnBoarding} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+        </Stack.Navigator>
     );
 }
