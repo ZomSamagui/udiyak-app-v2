@@ -14,7 +14,10 @@
       "expo-dotenv"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.zomsamagui.udiyak",
+      "buildNumber": "1.0.0",
+      "bundleVersion": "1"
     }
   }
 }
