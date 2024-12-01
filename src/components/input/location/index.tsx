@@ -1,31 +1,68 @@
 import React, { useState } from 'react';
-import { TextInput, Button, View } from 'react-native';
+import { TextInput, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { Thema } from "src/style/thema";
 
 interface LocationInputProps {
     onSearch: (query: string) => void;
+    placeholder?: string;
 }
 
-const LocationInput: React.FC<LocationInputProps> = ({ onSearch }) => {
+const LocationInput = ({ onSearch }: LocationInputProps) => {
     const [query, setQuery] = useState('');
 
     const handleSearch = () => {
         if (query.trim()) {
-            onSearch(query);  // 입력된 텍스트를 onSearch 함수에 전달
+            onSearch(query);
         }
     };
 
     return (
-        <View style={{ padding: 10 }}>
+        <View style={styles.container}>
             <TextInput
-                style={{ width: "100%", height: 50, borderRadius: 5, borderColor: Thema.colors.gray[200], borderWidth: 1, marginBottom: 10, padding: 10 }}
+                style={styles.input}
                 placeholder="장소 또는 도로명을 입력하세요"
                 value={query}
                 onChangeText={setQuery}
+                placeholderTextColor={Thema.colors.gray[300]}
             />
-            <Button title="검색" onPress={handleSearch} />
+            <TouchableOpacity style={styles.button} onPress={handleSearch}>
+                <Text style={styles.buttonText}>검색</Text>
+            </TouchableOpacity>
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        paddingHorizontal: 10,
+        marginVertical: 10,
+    },
+    input: {
+        flex: 1,
+        height: 50,
+        borderWidth: 1,
+        borderColor: Thema.colors.gray[200],
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        backgroundColor: Thema.colors.white,
+        marginRight: 10,
+    },
+    button: {
+        backgroundColor: Thema.colors.primary[400],
+        height: 50,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+    },
+    buttonText: {
+        color: Thema.colors.white,
+        fontSize: 16,
+        fontWeight: '600',
+    },
+});
 
 export default LocationInput;
