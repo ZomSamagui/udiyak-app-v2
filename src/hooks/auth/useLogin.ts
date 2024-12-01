@@ -42,12 +42,14 @@ const useLogin = () => {
 
             return true;
         } catch (err: any) {
+            console.error('로그인 요청 에러:', err.response);
             const errorMessage = err.response?.data?.message || '로그인에 실패했습니다.';
             setError(errorMessage);
             Alert.alert('로그인 오류', errorMessage);
             setLoading(false);
             return false;
         }
+
     };
 
     return {login, loading, error};
