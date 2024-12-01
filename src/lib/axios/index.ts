@@ -90,6 +90,26 @@ class AxiosService {
             throw error;
         }
     }
+
+    // DELETE 요청 함수
+    public async deleteData<T>(endpoint: string, params: any): Promise<T> {
+        try {
+            const response = await this.axiosInstance.delete(endpoint, { params });
+            return response.data;
+        } catch (error: any) {
+            throw error;
+        }
+    }
+
+    // GET 요청 함수
+    public async getData<T>(endpoint: string, data: any, params?: any): Promise<T> {
+        try {
+            const response = await this.axiosInstance.get(endpoint, { params, ...data });
+            return response.data;
+        } catch (error: any) {
+            throw error;
+        }
+    }
 }
 
 const udiyakCustomAxios = new AxiosService();
