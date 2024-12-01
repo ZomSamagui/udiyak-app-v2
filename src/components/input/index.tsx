@@ -46,7 +46,7 @@ export const UdiyakInput = ({
                 <TouchableOpacity style={styles.eyeIcon} onPress={togglePasswordVisibility}>
                     <Feather
                         name={showPassword ? "eye-off" : "eye"}
-                        size={24}
+                        size={20}
                         color={Thema.colors.gray["300"]}
                     />
                 </TouchableOpacity>
@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
     eyeIcon: {
         position: 'absolute',
         right: 12,
-        top: '27%',
+        top: '50%',
         transform: [{ translateY: -12 }],
     },
 });
+
