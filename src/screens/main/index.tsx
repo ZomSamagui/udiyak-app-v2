@@ -10,6 +10,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from 'src/navigation/RootNavigation';
 import { Ionicons } from '@expo/vector-icons';
 import useAddCoordinatesToShops from 'src/hooks/useCallShops';
+import {Thema} from "../../style/thema";
+import TheJamsilText from "../../components/fonts/TheJamsil";
 
 // 타입 정의
 interface MedicineShop {
@@ -148,7 +150,7 @@ const Main = () => {
     // 안전상비의약품 강조 스타일
     const highlightEmergencyMedicine = (isEmergency: boolean) => {
         return isEmergency
-            ? { backgroundColor: 'yellow', padding: 10, borderRadius: 5 }
+            ? { backgroundColor: Thema.colors.primary[300], padding: 10, borderRadius: 5 }
             : { padding: 10, borderRadius: 5 };
     };
 
@@ -190,7 +192,7 @@ const Main = () => {
                             latitude: shop.위도,
                             longitude: shop.경도,
                         }}
-                        onPress={() => handleShopClick(shop)} // 클릭 시 해당 위치로 이동
+                        onPress={() => handleShopClick(shop)}
                     >
                         <Ionicons name="medical" size={40} color={shop.isEmergencyMedicine ? 'green' : 'blue'} />
                     </Marker>
@@ -205,9 +207,9 @@ const Main = () => {
                         return (
                             <TouchableOpacity
                                 style={[styles.shopItem, highlightEmergencyMedicine(item.isEmergencyMedicine)]}
-                                onPress={() => handleShopClick(item)} // 클릭 시 해당 위치로 이동
+                                onPress={() => handleShopClick(item)}
                             >
-                                <Text>{item.name}</Text>
+                                <TheJamsilText fontWeight={"Medium"} fontSize={Thema.fontSize.body}>{item.name}</TheJamsilText>
                             </TouchableOpacity>
                         );
                     }}
@@ -246,7 +248,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         marginBottom: 5,
-        backgroundColor: 'lightblue',
+        backgroundColor: Thema.colors.primary[200],
     },
     infoContainer: {
         position: 'absolute',
