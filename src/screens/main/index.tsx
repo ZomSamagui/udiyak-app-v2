@@ -1,20 +1,23 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
-import {KAKAO_REST_API_KEY, OPEN_API_KEY} from "@env";
+import { KAKAO_REST_API_KEY, OPEN_API_KEY } from '@env';
 import LocationInput from 'src/components/input/location';
 import PlaceModal from 'src/components/modal/place';
-import {useNavigation} from '@react-navigation/core';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from 'src/navigation/RootNavigation';
-import {Ionicons} from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from 'src/navigation/RootNavigation';
+import { Ionicons } from '@expo/vector-icons';
+import useAddCoordinatesToShops from 'src/hooks/useCallShops';
 
 // 타입 정의
 interface MedicineShop {
     위도: number;
     경도: number;
-    [key: string]: any;
+    name: string;
+    isEmergencyMedicine: boolean; // 안전상비의약품 여부
+    roadAddress?: string;
 }
 
 interface Place {
@@ -38,12 +41,13 @@ const Main = () => {
     const [places, setPlaces] = useState<Place[]>([]);
     const [modalVisible, setModalVisible] = useState(false);
     const [medicineShops, setMedicineShops] = useState<MedicineShop[]>([]);
+    const [mapRef, setMapRef] = useState<MapView | null>(null); // MapView 참조 추가
 
     const navigation = useNavigation<RootNavigationProps>();
 
     useEffect(() => {
         (async () => {
-            const {status} = await Location.requestForegroundPermissionsAsync();
+            const { status } = await Location.requestForegroundPermissionsAsync();
             if (status === 'granted') {
                 const currentLocation = await Location.getCurrentPositionAsync({});
                 setLocation(currentLocation.coords);
@@ -85,13 +89,15 @@ const Main = () => {
             const response = await fetch(url);
             if (!response.ok) throw new Error('판매업소 데이터 요청 실패');
             const data = await response.json();
-            const filteredShops = data.data.filter((shop: any) => shop['위도'] && shop['경도']);
-            const convertedShops = filteredShops.map((shop: any) => ({
-                ...shop,
-                위도: parseFloat(shop['위도']),
-                경도: parseFloat(shop['경도']),
+
+            // 도로명 주소로 위도, 경도를 추가하는 훅 사용
+            const shops = data.data.map((shop: any) => ({
+                name: shop['업체명'],
+                roadAddress: shop['소재지(도로명)'],
+                isEmergencyMedicine: shop['업종'] === '안전상비의약품판매업',
             }));
-            setMedicineShops(convertedShops);
+
+            setMedicineShops(shops); // 상태 업데이트
         } catch (error) {
             console.error('판매업소 데이터 요청 실패:', error);
         }
@@ -101,7 +107,7 @@ const Main = () => {
         try {
             const url = `https://dapi.kakao.com/v2/local/search/keyword.json?query=${encodeURIComponent(query)}`;
             const response = await fetch(url, {
-                headers: {Authorization: `KakaoAK ${KAKAO_REST_API_KEY}`},
+                headers: { Authorization: `KakaoAK ${KAKAO_REST_API_KEY}` },
             });
 
             if (!response.ok) throw new Error('검색 실패');
@@ -120,6 +126,8 @@ const Main = () => {
     };
 
     const handlePlaceSelect = (place: Place) => {
+        console.log('선택된 장소:', place);
+
         setSearchedLocation({
             latitude: parseFloat(place.y),
             longitude: parseFloat(place.x),
@@ -129,6 +137,7 @@ const Main = () => {
             heading: null,
             speed: null,
         });
+        setAddress(place.road_address?.address_name || '도로명 주소 없음');
         setModalVisible(false);
     };
 
@@ -136,10 +145,32 @@ const Main = () => {
         navigation.navigate('Medicine');
     };
 
+    // 안전상비의약품 강조 스타일
+    const highlightEmergencyMedicine = (isEmergency: boolean) => {
+        return isEmergency
+            ? { backgroundColor: 'yellow', padding: 10, borderRadius: 5 }
+            : { padding: 10, borderRadius: 5 };
+    };
+
+    const updatedMedicineShops = useAddCoordinatesToShops(medicineShops);
+
+    // 클릭된 상가 위치로 지도 이동
+    const handleShopClick = (shop: MedicineShop) => {
+        if (mapRef) {
+            mapRef.animateToRegion({
+                latitude: shop.위도,
+                longitude: shop.경도,
+                latitudeDelta: 0.01,
+                longitudeDelta: 0.01,
+            });
+        }
+    };
+
     return (
         <View style={styles.container}>
             <MapView
                 style={styles.map}
+                ref={(ref) => setMapRef(ref)} // MapView 참조 설정
                 region={{
                     latitude: searchedLocation?.latitude || location?.latitude || 37.5665,
                     longitude: searchedLocation?.longitude || location?.longitude || 126.978,
@@ -148,37 +179,46 @@ const Main = () => {
                 }}
             >
                 {location && (
-                    <Marker
-                        coordinate={{
-                            latitude: location.latitude,
-                            longitude: location.longitude,
-                        }}
-                    >
+                    <Marker coordinate={{ latitude: location.latitude, longitude: location.longitude }}>
                         <Ionicons name="pin" size={40} color="red" />
                     </Marker>
                 )}
-                {medicineShops.map((shop, index) => (
+                {updatedMedicineShops.map((shop, index) => (
                     <Marker
                         key={index}
                         coordinate={{
                             latitude: shop.위도,
                             longitude: shop.경도,
                         }}
+                        onPress={() => handleShopClick(shop)} // 클릭 시 해당 위치로 이동
                     >
-                        <Ionicons name="medical" size={40} color="blue" />
+                        <Ionicons name="medical" size={40} color={shop.isEmergencyMedicine ? 'green' : 'blue'} />
                     </Marker>
                 ))}
             </MapView>
+
+            <View style={styles.shopList}>
+                <FlatList
+                    data={updatedMedicineShops}
+                    keyExtractor={(item, index) => `${item.위도}_${item.경도}_${index}`}
+                    renderItem={({ item }) => {
+                        return (
+                            <TouchableOpacity
+                                style={[styles.shopItem, highlightEmergencyMedicine(item.isEmergencyMedicine)]}
+                                onPress={() => handleShopClick(item)} // 클릭 시 해당 위치로 이동
+                            >
+                                <Text>{item.name}</Text>
+                            </TouchableOpacity>
+                        );
+                    }}
+                />
+            </View>
+
             <View style={styles.infoContainer}>
                 <Text>현재 위치: {address || '주소를 불러오는 중...'}</Text>
                 <LocationInput onSearch={searchPlaces} />
             </View>
-            <PlaceModal
-                visible={modalVisible}
-                places={places}
-                onSelect={handlePlaceSelect}
-                onClose={() => setModalVisible(false)}
-            />
+            <PlaceModal visible={modalVisible} places={places} onSelect={handlePlaceSelect} onClose={() => setModalVisible(false)} />
             <TouchableOpacity style={styles.fab} onPress={handleNavigateToMedicine}>
                 <Ionicons name="medkit" size={30} color="white" />
             </TouchableOpacity>
@@ -195,29 +235,33 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '70%',
     },
+    shopList: {
+        position: 'absolute',
+        top: '70%',
+        left: 10,
+        right: 10,
+        bottom: 10,
+    },
+    shopItem: {
+        padding: 10,
+        borderRadius: 5,
+        marginBottom: 5,
+        backgroundColor: 'lightblue',
+    },
     infoContainer: {
+        position: 'absolute',
+        top: 50,
         padding: 10,
         backgroundColor: 'white',
-        width: '100%',
-        position: 'absolute',
-        bottom: 10,
-        alignItems: 'center',
+        borderRadius: 5,
     },
     fab: {
         position: 'absolute',
-        bottom: 80,
-        right: 20,
+        bottom: 30,
+        right: 30,
         backgroundColor: 'blue',
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.5,
-        shadowRadius: 2,
-        elevation: 5,
+        padding: 15,
+        borderRadius: 50,
     },
 });
 
