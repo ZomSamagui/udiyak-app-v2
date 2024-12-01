@@ -21,7 +21,6 @@ const useLogin = () => {
             const {accessToken, refreshToken, user} = response.data || {};
 
             if (accessToken && refreshToken) {
-                // 토큰 저장
                 const expirationDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
 
                 await AsyncStorage.setItem('accessToken', accessToken);
@@ -31,7 +30,6 @@ const useLogin = () => {
                 console.log('AccessToken과 RefreshToken 저장 완료');
                 Alert.alert('로그인 성공', '로그인에 성공했습니다.');
 
-                // 성공 시 true 반환
                 setLoading(false);
                 return true;
             }
@@ -42,7 +40,6 @@ const useLogin = () => {
                 throw new Error('로그인 응답에 사용자 정보가 없습니다.');
             }
 
-            // 이 라인은 도달하지 않을 것입니다.
             return true;
         } catch (err: any) {
             const errorMessage = err.response?.data?.message || '로그인에 실패했습니다.';
